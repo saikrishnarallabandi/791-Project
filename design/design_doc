@@ -1,0 +1,38 @@
+
+
+#### System Building
+
+def system(config, feature=SoundNet, layer):
+      # Separate train and test. Lets  think about the best way to architect this
+      train,test = zip(feature)
+     
+     # Some feature manipulation
+     features_manipulated = feature_engg(feature, config.manipulation)
+
+     # Some model
+     clf = classifier(config.classfier, train)
+     
+    # Result Calculation
+    UAR = get_UAR(clf, test)
+
+    # Write to a log file
+
+
+
+def feature_engg(feature, manipulation=scaling):
+      
+        # Standard scaling
+        from sklearn.preprocessing import StandardScaler
+        scaler = StandardScaler()
+        train,test = zip(feature)
+        scaler = scaler.fit(train)
+        train_manipulated = scaler.transform(train)
+        test_manipulated = scaler.transform(test)
+        return train_manipulated, test_manipulated
+
+def classifier(clf, data):
+        clf = sklearn.ensemble.RandomForestClassifier(n_estimators=10)
+        clf.fit(data)
+        return clf
+
+
