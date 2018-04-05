@@ -1,0 +1,13 @@
+# Example of config file
+
+feature:
+    feat_type: high_level
+    feat_name: soundnet
+    num_layer: 5
+
+feature_manipulation: 
+    spkID: true
+    normCombination: true
+    quadScaling: true
+
+model: SVM
