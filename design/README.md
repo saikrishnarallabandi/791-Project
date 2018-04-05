@@ -2,23 +2,23 @@
 *Continuously edited to include new functions*
 
 ### Features
-**High-level**
-SoundNet -> layer num: ....
+**High-level**  
+SoundNet -> layer num: ....  
 
 
-**Low-level**
-MFCC
-F0 Embedding
+**Low-level**  
+MFCC  
+F0 Embedding  
 
 
 
 ### Feature Engineering
-Quadratic Scaling
-Norm Combination
-Speaker Info
+Quadratic Scaling  
+Norm Combination  
+Speaker Info  
 
 
 ### Models
-SVM
-RandomForest
+SVM  
+RandomForest  
 Neural Networks
