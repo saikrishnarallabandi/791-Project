@@ -1,4 +1,3 @@
-#from utils import *
 from utils import *
 
 import keras
@@ -20,7 +19,7 @@ def get_model(window = 5, num_classes = 3, input_dim = 50, hidden = 256):
     model.compile(loss='categorical_crossentropy',
                   optimizer='rmsprop',
                   metrics=['accuracy'])
-    model.summary()
+    return model
 
 
 if __name__ == '__main__':
@@ -40,6 +39,7 @@ if __name__ == '__main__':
     x_train, y_train = make_XY(train_input_array, train_output_array, input_dim, num_classes)
 
     model = get_model()
+    model.summary()
     model.fit(x_train, y_train, batch_size=64, epochs=6, shuffle=True, validation_data=(x_dev,y_dev))
 
 # actuall content for modules
