@@ -1,0 +1,16 @@
+Using TensorFlow backend.
+I0407 19:40:59.487384 5339 0_mvp_keras.py:27] Loading labels
+I0407 19:40:59.489535 5339 0_mvp_keras.py:29] Loaded labels
+I0407 19:40:59.489608 5339 0_mvp_keras.py:31] Loading developing set
+Traceback (most recent call last):
+  File "0_mvp_keras.py", line 32, in <module>
+    devel_input_array, devel_output_array = load_data('files.devel', labels)
+  File "/Users/liboyue/Desktop/CMU/11-792 Design & Engineering of Intelligent Information Systems Lab/791-Project/sub_challenges/self_assessed_affect/clean_scripts/utils.py", line 34, in load_data
+    inp = np.loadtxt(input_file)
+  File "/Users/liboyue/anaconda/lib/python3.6/site-packages/numpy/lib/npyio.py", line 985, in loadtxt
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/Users/liboyue/anaconda/lib/python3.6/site-packages/numpy/lib/npyio.py", line 985, in <listcomp>
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/Users/liboyue/anaconda/lib/python3.6/site-packages/numpy/lib/npyio.py", line 687, in floatconv
+    return float(x)
+KeyboardInterrupt
