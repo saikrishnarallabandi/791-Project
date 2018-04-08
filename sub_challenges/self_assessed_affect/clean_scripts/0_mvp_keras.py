@@ -35,6 +35,8 @@ if __name__ == '__main__':
     train_input_array, train_output_array = load_data('files.train', labels)
     log.info('Loaded training set')
 
+    input_dim = 50
+    num_classes = 3
     x_dev, y_dev = make_XY(devel_input_array, devel_output_array, input_dim, num_classes)
     x_train, y_train = make_XY(train_input_array, train_output_array, input_dim, num_classes)
 
