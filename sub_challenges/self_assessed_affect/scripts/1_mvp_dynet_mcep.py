@@ -1,4 +1,7 @@
 #from utils import *
+import sys
+sys.path.append("absolute path of logs directory")
+import log_config as l
 import numpy as np
 import random
 from keras.utils import to_categorical
@@ -15,7 +18,7 @@ window = 5
 num_classes = 3
 input_dim = 5
 hidden = 256
-
+l.set_exp_name("1_mvp_dynet_mcep")
 
 # Process labels
 labels_file = '/home3/srallaba/data/ComParE2018_SelfAssessedAffect/lab/ComParE2018_SelfAssessedAffect.tsv'
@@ -36,7 +39,7 @@ binary2id = {i:w for w,i in labels.iteritems()}
 
 
 # Process the dev
-print("Processing Dev")
+l.logger("Processing Dev", 'INFO')
 f = open('files.devel.copy')
 devel_input_array = []
 devel_output_array = []
@@ -51,7 +54,7 @@ x_dev = np.array(devel_input_array)
 y_dev = np.array(devel_output_array)
 
 # Process the train
-print("Processing Train")
+l.logger("Processing Train",'INFO')
 f = open('files.train')
 train_input_array = []
 train_output_array = []
@@ -66,10 +69,11 @@ for line in f:
 
 x_train = np.array(train_input_array)
 y_train = np.array(train_output_array)
-print "Y train is: ", y_train
+l.logger( "Y train is: ")
+l.logger(y_train)
 
 # Process the test
-print("Processing Test")
+l.logger("Processing Test", 'INFO')
 f = open('files.devel.copy')
 test_input_array = []
 for line in f:
@@ -111,11 +115,11 @@ def test(epoch):
  
 def get_challenge_uar(epoch):
    cmd = 'perl format_pred.pl /home3/srallaba/data/ComParE2018_SelfAssessedAffect/arff/ComParE2018_SelfAssessedAffect.ComParE.devel.arff  submission_' + str(epoch) + '.txt submission.arff 6375'
-   print cmd
+   l.logger(cmd)
    os.system(cmd)
 
    cmd = 'perl score.pl /home3/srallaba/data/ComParE2018_SelfAssessedAffect/arff/ComParE2018_SelfAssessedAffect.ComParE.devel.arff submission.arff 6375'
-   print cmd
+   l.logger(cmd)
    os.system(cmd)
 
 class LoggingCallback(Callback):
@@ -147,7 +151,7 @@ startTime = time.time()
 # Loop over the training instances and call the mlp
 for epoch in range(num_epochs):
   start_time = time.time()
-  print " Epoch ", epoch
+  l.logger("Epoch = %d" %epoch)
   train_loss = 0
   recons_loss = 0
   random.shuffle(train_data)
@@ -175,9 +179,9 @@ for epoch in range(num_epochs):
   end_time = time.time()
   duration = end_time - start_time
   start_time = end_time
-  print "Train Loss after epoch " +  str(epoch) + " : " +  str(float(train_loss/frame_count)), " with ", frame_count, " frames, in ", float((end_time - startTime)/60)  , " minutes "  
-  print "KL Loss: ", str(float(KL_loss/frame_count)), " RECONS loss: ", str(float(RECONS_loss/frame_count))
-  print "I think I will run for another ", float( duration * ( num_epochs - epoch) / 60 ), " minutes "
+  l.logger("Train Loss after epoch " +  str(epoch) + " : " +  str(float(train_loss/frame_count)) + " with " + frame_count + " frames, in " +float((end_time - startTime)/60)  + " minutes "  )
+  l.logger("KL Loss: " + str(float(KL_loss/frame_count)) + " RECONS loss: " + str(float(RECONS_loss/frame_count)))
+  l.logger( "I think I will run for another " + str(float( duration * ( num_epochs - epoch) / 60 )) +  " minutes ")
   print '\n'
 
   test(epoch)
