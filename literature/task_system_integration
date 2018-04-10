@@ -1,1 +1,11 @@
-Add
+This module consists of two main activities:
+1. Configuring parameters/hyperparameters through YAML integration
+2. Logging module
+
+
+Each sub-module is explained in detail:
+1. YAML Integration:
+	The objective of this module is to build a sub-system that provides this project the ability to tune its other modules through some configuration files. This would structure the cde better, leading to less hard-coding of parameters and hyperparameters of features/models. Another great advantage will be reduction in the amount of code changes that need to be made due to changing parameters. This would allow the user to have multiple runs of the same algorithms with different parameters by just changing the config file. A grid search is also implemented in this module to execute multiple runs and get the best configurations producing the highest UAR.
+
+2. Logging module:
+	This module will provide a clean way of debugging, logging and reporting output to the user. The module is structured to neatly capture errors/warnings, debug/info logs, and outputs/reports into different files. The files are genererated as the experiment is run and labeled with timestamp, so that multiple runs can be executed through grid search and the results would be recorded based on timestamp. 
