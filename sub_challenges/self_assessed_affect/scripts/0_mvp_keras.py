@@ -1,4 +1,6 @@
-#from utils import *
+import sys
+sys.path.append("/Users/bhavyakarki/Desktop/design791/last/791-Project/logs")
+import log_config
 import numpy as np
 import random
 from keras.utils import to_categorical
@@ -7,7 +9,7 @@ window = 5
 num_classes = 3
 input_dim = 50
 hidden = 256
-
+log_config.set_exp_name("0_mvp_keras")
 
 def get_max_len(arr):
    '''
@@ -21,6 +23,7 @@ def get_max_len(arr):
 
 
 # Process labels
+log_config.logger("Starting experiment", 'INFO')
 labels_file = '/home3/srallaba/data/ComParE2018_SelfAssessedAffect/lab/ComParE2018_SelfAssessedAffect.tsv'
 labels = {}
 ids = ['l','m','h']
@@ -37,7 +40,7 @@ for line in f:
     
 
 # Process the dev
-print("Processing Dev")
+log_config.logger("Processing Dev", 'INFO')
 f = open('files.devel')
 devel_input_array = []
 devel_output_array = []
@@ -58,7 +61,7 @@ for i, (x,y) in enumerate(zip(devel_input_array, devel_output_array)):
 
 
 # Process the train
-print("Processing Train")
+log_config.logger("Processing Train", 'INFO')
 f = open('files.train')
 train_input_array = []
 train_output_array = []
