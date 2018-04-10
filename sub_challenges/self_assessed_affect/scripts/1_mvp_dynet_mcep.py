@@ -99,7 +99,7 @@ def get_uar(epoch):
    for y in y_dev:
        y_dev_ascii.append(np.argmax(y))
 
-   print "UAR after epoch ", epoch, " is ", classification_report(y_dev_ascii, y_dev_pred)
+   l.logger("UAR after epoch " +  str(epoch) + " is " + classification_report(y_dev_ascii, y_dev_pred), 'REPORT_CR')
 
 
 def test(epoch):
