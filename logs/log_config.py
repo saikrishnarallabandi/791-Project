@@ -15,9 +15,9 @@ def set_exp_name(expname):
     LOG_FILE_REPORT = os.path.join(dirname, 'reports/')
     LOG_FILE_INFO = os.path.join(dirname, 'info/')
 
-    setup_logger('log_error', LOG_FILE_ERROR + "error_" + expname + str(datetime.now().strftime('%Y-%m-%d_%H-%M')) )
+    setup_logger('log_error', LOG_FILE_ERROR + "error_" + expname + "_" + str(datetime.now().strftime('%Y-%m-%d_%H-%M')) )
     
-    setup_logger('log_info',LOG_FILE_INFO + "info_" + expname + str(datetime.now().strftime('%Y-%m-%d_%H-%M')) )
+    setup_logger('log_info',LOG_FILE_INFO + "info_" + expname + "_" + str(datetime.now().strftime('%Y-%m-%d_%H-%M')) )
     
     # TBD
     #setup_logger('log_report', LOG_FILE_REPORT)

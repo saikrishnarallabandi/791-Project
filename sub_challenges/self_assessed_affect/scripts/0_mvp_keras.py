@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/Users/bhavyakarki/Desktop/design791/last/791-Project/logs")
+sys.path.append("absolute path of logs directory")
 import log_config
 import numpy as np
 import random
