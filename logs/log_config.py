@@ -40,7 +40,13 @@ def logger(msg, level='INFO'):
  
     if level == 'INFO'    :
         log = logging.getLogger('log_info')
-        log.info(msg)
+        if isinstance(msg, (list,)): 
+            log.info("Enumerating LIST")
+            str1 = '\n'.join(msg)
+            log.info(str1)
+        else:
+            log.info(msg)
+    
     if level == 'ERROR'    :
         log = logging.getLogger('log_error')
         log.error(msg)
