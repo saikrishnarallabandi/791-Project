@@ -103,14 +103,14 @@ def get_uar(epoch):
 
 
 def test(epoch):
-   f = open('submission_' + str(epoch) + '.txt','w')
-   f.write('inst# actual predicted' + '\n')
+   #f = open('submission_' + str(epoch) + '.txt','w')
+   #f.write('inst# actual predicted' + '\n')
    y_test_pred = []
    for k, (i,o) in enumerate(dev_data):
         pred = vae.predict_label(i)
         prediction = np.argmax(pred.value())
-        f.write(str(k) + ' ' + str(prediction) + ':' + str(ids[prediction]) +  ' ' + str(prediction) + ':' + str(ids[prediction])  + '\n')
-   f.close()
+        l.logger(str(k) + ' ' + str(prediction) + ':' + str(ids[prediction]) +  ' ' + str(prediction) + ':' + str(ids[prediction])  + '\n', 'REPORT_RAW')
+  
      
  
 def get_challenge_uar(epoch):
